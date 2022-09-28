@@ -52,7 +52,14 @@
         "description": "The ARM template provides a basic configuration. Additional configuration can be added here."
       }
     },
-
+     "zone": {
+      "type": "string",
+      "defaultValue": "1",
+      "allowedValues": [
+        "1",
+        "2",
+        "3"
+      ],
     "instanceType": {
       "type": "string",
       "defaultValue": "Standard_D2s_v3",
@@ -386,8 +393,12 @@
       "location": "[parameters('location')]",
       "sku":
       {
-        "name": "Basic"
+        "name": "Standard",
+        "tier": "Regional"
       },
+      "zones": [
+        "[parameters('zone')]"
+      ],
       "properties": {
         "publicIPAllocationMethod": "[parameters('publicIPAddressType')]"
       }
@@ -442,6 +453,9 @@
       "dependsOn": [
         "[variables('fmgNic1Name')]"
       ],
+      "zones": [
+        "[parameters('zone')]"
+      ], 
       "properties": {
         "hardwareProfile": {
           "vmSize": "[parameters('instanceType')]"

@@ -50,6 +50,10 @@
         "subnet1Prefix": {
             "value": "172.16.137.0/24"
         },
+        "subnet1StartAddress": {
+            "value": "172.16.137.4"
+        },
+                
         "dataDiskSize": {
             "value": "1024"
         },
